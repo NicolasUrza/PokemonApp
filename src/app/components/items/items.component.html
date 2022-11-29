@@ -17,30 +17,33 @@
             </div>
         </div>
         <div class="paginador">
-            <div class="row">
-                <div class="col">
+            <div class="row text-center">
+                <div class="col-12">
                     <span class="pyBadge">Cantidad de items: {{RegistrosTotales}}</span>
                 </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item indicePagina" *ngIf="Pagina>1" (click)="buscarItems(-1)">
-                            <a class="page-link indicePagina" aria-label="Previous">
-                                << </a>
-                        </li>
-                        <div *ngFor="let j of paginas">
-                            <li class="page-item indicePagina" [ngClass]="{'active':j==Pagina}"
-                                (click)="buscarItems(-Pagina+j)" *ngIf="j!=0">
-                                <a class="page-link indicePagina" [ngClass]="{'active':j==Pagina}">{{j}}</a>
-                        </div>
-                        <li class="page-item indicePagina" *ngIf="RegistrosTotales/24>10"><a
-                                class="page-link indicePagina" href="#">...</a></li>
-                        <li class="page-item indicePagina" (click)="buscarItems(1)">
-                            <a class="page-link indicePagina" href="#" aria-label="Next">
-                                >>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="col-12">
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item indicePagina" *ngIf="Pagina>1" (click)="buscarItems(-1)">
+                                <a class="page-link indicePagina" aria-label="Previous">
+                                    << </a>
+                            </li>
+                            <div *ngFor="let j of paginas">
+                                <li class="page-item indicePagina" [ngClass]="{'active':j==Pagina}"
+                                    (click)="buscarItems(-Pagina+j)" *ngIf="j!=0">
+                                    <a class="page-link indicePagina" [ngClass]="{'active':j==Pagina}">{{j}}</a>
+                            </div>
+                            <li class="page-item indicePagina" *ngIf="RegistrosTotales/24>10"><a
+                                    class="page-link indicePagina" href="#">...</a></li>
+                            <li class="page-item indicePagina" (click)="buscarItems(1)">
+                                <a class="page-link indicePagina" href="#" aria-label="Next">
+                                    >>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
@@ -83,7 +86,8 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="table-title">{{capitalizar(a.version_group.name.replaceAll("-"," "))}}</th>
+                                        <th scope="col" class="table-title">
+                                            {{capitalizar(a.version_group.name.replaceAll("-"," "))}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,7 +100,7 @@
 
                         </div>
                     </div>
-                    
+
                 </div>
 
             </div>
