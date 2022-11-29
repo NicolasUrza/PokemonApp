@@ -1,0 +1,119 @@
+@import "node_modules/bootstrap"
+article
+  background-color: #fde82bd8
+  padding: 1em
+
+.titulo
+  font-size: 4em
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  margin-bottom: 0.25em
+
+.titulos
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-bottom: 0.5em
+
+.contenido
+  background-color: #EE2B34
+  color: antiquewhite
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  border-radius: 35px 35px 35px 35px
+  -moz-border-radius: 35px 35px 35px 35px
+  -webkit-border-radius: 35px 35px 35px 35px
+  border: 0px solid #000000
+
+@media (max-width: 768px)
+  .imagen
+    padding: 1em
+    background-color: brown
+    border-radius: 35px 35px  0px 0px
+    -moz-border-radius: 35px  35px  0px 0px
+    -webkit-border-radius: 35px 35px  0px 0px
+
+@media (min-width: 768px)
+  .imagen
+    padding: 1em
+    background-color: brown
+    border-radius: 35px 0px 0px 35px
+    -moz-border-radius: 35px 0px 0px 35px
+    -webkit-border-radius: 35px 0px 0px 35px
+
+.caracteristicas
+  display: inline
+  align-items: left
+  font-size: 1.5em
+
+.descripcion
+  padding: 1.5em
+
+.item
+  padding: 1em
+
+  &:hover
+    border-radius: 35px 35px 35px 35px
+    -moz-border-radius: 35px 35px 35px 35px
+    -webkit-border-radius: 35px 35px 35px 35px
+    border: 0px solid #000000
+    background-color: brown
+    cursor: pointer
+
+.indicePagina
+  font-size: 1.2em
+  background-color: #fde82bd8
+  border-radius: 0px
+  -moz-border-radius: 0px
+  -webkit-border-radius: 0px
+  border: 0px solid #000000
+
+  &:hover
+    background-color: #fde82b81
+    cursor: pointer
+
+.active
+  background-color: #fde82b81
+  color: antiquewhite
+
+section
+  background-color: #000000
+  height: 30em
+
+.btn-volver
+  background-color: #c7b510d8
+  border-radius: 35px 35px 35px 35px
+  -moz-border-radius: 35px 35px 35px 35px
+  -webkit-border-radius: 35px 35px 35px 35px
+  border: 0px solid #000000
+  color: antiquewhite
+  font-size: 1.5em
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+.botones
+  display: flex
+  align-items: left
+  justify-content: left
+  padding: 1em
+
+.table-title
+  background-color: #ff5e5e
+  color: antiquewhite
+
+.fila
+  background-color: #ca232b
+  color: antiquewhite
+
+@media (min-width: 768px)
+  .centro-pantalla
+    margin-top: 50%
+
+hr
+  border: none
+  height: 5px
+
+  /* Set the hr color
+  color: antiquewhite
+
+  /* old IE
+  background-color: antiquewhite
+
+  /* Modern Browsers

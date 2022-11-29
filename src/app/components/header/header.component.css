@@ -1,0 +1,17 @@
+@import "../../../../node_modules/bootstrap";
+
+.buscador {
+    background-color: #fde82bd8;
+    color: antiquewhite;
+}
+
+.buscador:focus {
+    background-color: #fdf92b;;
+}
+.logo:hover {
+    background-color: brown;
+    cursor: pointer;
+}
+busqueda{
+    padding: 5%;
+}
