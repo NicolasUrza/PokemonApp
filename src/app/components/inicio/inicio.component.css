@@ -1,0 +1,36 @@
+article {
+    background-color: #fde82bd8;
+    padding: 1em;
+    color: antiquewhite;
+}
+
+header {
+    padding: 1em;
+    background-color: brown;
+    border-radius: 35px 35px 0px 0px;
+    -moz-border-radius: 35px 35px 0px 0px;
+    -webkit-border-radius: 35px 35px 0px 0px;
+}
+
+.contenido {
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    border-radius: 0px 0px 35px 35px;
+    -moz-border-radius: 0px 0px 35px 35px;
+    -webkit-border-radius: 0px 0px 35px 35px;
+    color: black;
+
+}
+
+.fondoBlanco {
+    background-color: rgb(247, 245, 245);
+}
+
+.inicio {
+
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    border-radius: 35px 35px 35px 35px;
+    -moz-border-radius: 35px 35px 35px 35px;
+    -webkit-border-radius: 35px 35px 35px 35px;
+}

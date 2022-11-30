@@ -8,12 +8,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PokemonComponent } from "./components/pokemon/pokemon.component";
 import { ItemsComponent } from './components/items/items.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InicioComponent } from './components/inicio/inicio.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PokemonComponent,
-    ItemsComponent
+    ItemsComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
