@@ -1,5 +1,5 @@
 import { compileFactoryFunction } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Item } from 'src/app/interfaces/item';
 import { NamedAPIResource } from 'src/app/interfaces/named-apiresource';
 import { Pagina } from 'src/app/interfaces/pagina';
@@ -16,7 +16,7 @@ export class ItemsComponent implements OnInit {
   i!: NamedAPIResource[];
   items: Item[] = [];
   RegistrosTotales!: number;
-  item!: Item;
+  item: Item;
   mostrarUno = false;
   Pagina = 1;
   paginas!: number[];
@@ -26,12 +26,13 @@ export class ItemsComponent implements OnInit {
 
   }
 
-  buscarItem(id: string) {
+  buscarItem(id: string) {  
+    this.item = null;
     this.mostrarUno = true;
     this.itemService.getbyid(id).subscribe((res: Item) => { this.item = res });
   }
 
-  BuscarEfectoArrojar(url: string) {
+  BuscarEfectoArrojar(url: string):any {
     let efecto = null;
     this.itemService.completarEfectoArrojar(url).subscribe((res: any) => {
 
@@ -53,7 +54,6 @@ export class ItemsComponent implements OnInit {
   }
 
   completar() {
-    console.log(this.i.length);
     for (let j = 0; j < this.i.length; j++) {
       this.itemService.completar(this.i[j].url).subscribe((res: Item) => { this.items.push(res); });
     }
@@ -65,7 +65,7 @@ export class ItemsComponent implements OnInit {
    * @param step 
    * @returns 
    */
-  range(start: number, stop = undefined, step = 1) {
+  range(start: number, stop:number = undefined, step = 1) {
     // si no hay un stop, entonces el stop es el start e inicio desde 0
     const startArray = stop === undefined ? 0 : start;
     const stopArray = stop === undefined ? start : stop;
@@ -109,5 +109,20 @@ export class ItemsComponent implements OnInit {
       }
     });
     return items;
+  }
+/**
+ * cuando la ventana cambia de tamaño se ejecuta este metodo
+ * cambia la cantidad de paginas que se muestra en el html
+ * @param event evento de resize de la ventana
+ */
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any ){
+    if(event.target.innerWidth<768){
+      this.paginas = this.RegistrosTotales / 24 > 5 ? this.range(5) : this.range(this.RegistrosTotales / 24);
+    }
+    else{
+      this.paginas = this.RegistrosTotales / 24 > 10 ? this.range(10) : this.range(this.RegistrosTotales / 24);
+    }
+
   }
 }
