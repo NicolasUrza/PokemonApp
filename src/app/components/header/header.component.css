@@ -8,6 +8,11 @@
 .buscador:focus {
     background-color: #fdf92b;;
 }
+
+.buscador:hover {
+    background-color: #fdf92b;;
+}
+
 .logo:hover {
     background-color: brown;
     cursor: pointer;

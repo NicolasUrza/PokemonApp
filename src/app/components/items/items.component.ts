@@ -22,8 +22,9 @@ export class ItemsComponent implements OnInit {
   paginas!: number[];
   constructor(private itemService: ItemService) { }
   ngOnInit(): void {
+    // buscamos los items para mostrar
     this.buscarItems(0);
-
+    
   }
 
   buscarItem(id: string) {  
@@ -48,7 +49,8 @@ export class ItemsComponent implements OnInit {
     this.itemService.get(cantItems, avance).subscribe((res: any) => {
       this.i = res.results;
       this.RegistrosTotales = res.count;
-      this.paginas = this.RegistrosTotales / 24 > 10 ? this.range(10) : this.range(this.RegistrosTotales / 24);
+      //this.paginas = this.RegistrosTotales / 24 > 10 ? this.range(10) : this.range(this.RegistrosTotales / 24);
+      this.calcularCantPaginas(window.innerWidth);
       this.completar();
     });
   }
@@ -117,12 +119,16 @@ export class ItemsComponent implements OnInit {
  */
   @HostListener('window:resize', ['$event'])
   onResize(event: any ){
-    if(event.target.innerWidth<768){
+    this.calcularCantPaginas(event.target.innerWidth);
+
+  }
+
+  calcularCantPaginas(pageWidth: number){
+    if(pageWidth<768){
       this.paginas = this.RegistrosTotales / 24 > 5 ? this.range(5) : this.range(this.RegistrosTotales / 24);
     }
     else{
       this.paginas = this.RegistrosTotales / 24 > 10 ? this.range(10) : this.range(this.RegistrosTotales / 24);
     }
-
   }
 }
