@@ -9,7 +9,7 @@
     </div>
     <div class="container text-center contenido" *ngIf="!mostrarUno">
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-2 item" *ngFor="let it of items">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 item" *ngFor="let it of items">
                 <a (click)="buscarItem(it.id.toString())">
                     <img src={{it.sprites.default}} alt="imagen de {{it.name}}" width="45%" class="img-fluid">
                     <h5>{{capitalizar(buscarNombre(it).replaceAll("-", " "))}}</h5>
