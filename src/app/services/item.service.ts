@@ -31,4 +31,11 @@ export class ItemService {
   getbyid(id:string){
     return this.httpClient.get<Item>(this.resourceUrl + id);
   }
+
+  getBusqueda(cantidad:string){
+    const params = new HttpParams()
+    .set("limit", cantidad)
+    .set("offset", "0");
+    return this.httpClient.get(this.resourceUrl, {params});
+  }
 }

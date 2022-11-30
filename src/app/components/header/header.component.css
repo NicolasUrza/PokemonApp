@@ -3,20 +3,72 @@
 .buscador {
     background-color: #fde82bd8;
     color: antiquewhite;
+    display: block;
+    border-radius: 35px 0px 0px 35px;
+    -moz-border-radius: 35px 0px 0px 35px;
+    -webkit-border-radius: 35px 0px 0px 35px;
+
 }
 
 .buscador:focus {
-    background-color: #fdf92b;;
+    background-color: #fdf92b;
+    ;
 }
 
 .buscador:hover {
-    background-color: #fdf92b;;
+    background-color: #fdf92b;
+    ;
 }
 
 .logo:hover {
     background-color: brown;
     cursor: pointer;
 }
-busqueda{
+
+busqueda {
     padding: 5%;
+}
+
+.btn-search {
+    background-color: #fde82bd8;
+    color: antiquewhite;
+    display: block;
+    border-radius: 0px 35px 35px 0px;
+    -moz-border-radius: 0px 35px 35px 0px;
+    -webkit-border-radius: 0px 35px 35px 0px;
+
+}
+
+
+.resultados {
+    max-height: 280px;
+    overflow-y: auto;
+    opacity: 1;
+    position: absolute;
+    background-color: #fde82bd8;
+    z-index: 20;
+}
+
+
+.resultado{
+    list-style: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100%;
+    display: block;
+}
+
+.resultado:hover{
+    background-color: #c0bd23;
+    cursor: pointer;
+}
+.buscando{
+    border-radius: 15px 0px 0px 0px;
+    -moz-border-radius: 15px 0px 0px 0px;
+    -webkit-border-radius: 15px 0px 0px 0px;
+}
+
+.resaltado{
+    background-color: #c0bd23;
+    color: rgb(95, 95, 95);
 }

@@ -1,17 +1,35 @@
 <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        
+
         <div class="col-6 col-md-4 ">
             <a href="#">
-            <img class = "logo" src="assets/Pokemon-Logo.png" width="90%">
+                <img class="logo" src="assets/Pokemon-Logo.png" width="90%">
             </a>
         </div>
 
         <div class="col-6 col-md-8 busqueda">
-            <form  role="search">
-                <input type="search" class="form-control buscador" placeholder="Buscar" aria-label="Search">
-            </form>
-        </div>
-    </div>
+            <div class="row searchInput">
+                <input type="search" class="form-control buscador col-10 col-md-11" [ngClass]="{'buscando': BuscadorActivo}" id="buscador" placeholder="Buscar"
+                    aria-label="Search">
 
+                <button class="btn btn-search col-2 col-md-1 icono-busqueda">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                </button>
+            </div>
+            <div class="row">
+                <div class="resultados col-11" *ngIf="BuscadorActivo">
+                    <ul *ngFor="let resultado of resultadosBusqueda">
+                        <li class="resultado {{resultado.name}}" >
+                             {{identificar(resultado.name, 0)}}<span class="resaltado">{{identificar(resultado.name,1)}}</span>{{identificar(resultado.name,2)}}
+                            </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
