@@ -111,7 +111,7 @@ section{
     color: antiquewhite;
 }
 .fila{
-    background-color: #ca232b;
+    background-color: rgb(158, 27, 27);
     color: antiquewhite;
 }
 @media (min-width: 768px) {
