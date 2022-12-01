@@ -2,7 +2,7 @@
 
 .buscador {
     background-color: #fde82bd8;
-    color: antiquewhite;
+    color: #2b343b;
     display: block;
     border-radius: 35px 0px 0px 35px;
     -moz-border-radius: 35px 0px 0px 35px;
@@ -52,6 +52,7 @@ busqueda {
 
 .resultado{
     list-style: none;
+    color:  #2b343b;
     padding-top: 8px;
     padding-bottom: 8px;
     width: 100%;
