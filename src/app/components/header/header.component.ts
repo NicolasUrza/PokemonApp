@@ -23,9 +23,20 @@ export class HeaderComponent implements OnInit {
   cargarResultados() {
     this.itemService.get("24", "0").subscribe((res: any) => {
       this.itemService.getBusqueda(res.count).subscribe((res: any) => {
-        this.resultados = res.results;
+        const items = res.results;
+        items.forEach((element: NamedAPIResource) => {
+          this.resultados.push({ name: this.capitalizar(element.name.replaceAll("-", " ")), url: element.url });
+        });
       });
     });
+  }
+
+  capitalizar(oracion: string): string {
+    const palabras = oracion.split(" ");
+    for (let i = 0; i < palabras.length; i++) {
+      palabras[i] = palabras[i][0].toUpperCase() + palabras[i].substr(1);
+    }
+    return palabras.join(" ");
   }
   // event listener si se ingresa una letra a la barra de busqueda
   @HostListener('input') oninput() {
@@ -45,7 +56,7 @@ export class HeaderComponent implements OnInit {
   }
   // event listener si deja de estar en focus
   @HostListener('focusout') onfocusout() {
-    
+
     this.BuscadorActivo = false;
   }
   // event listener si se hace click 
@@ -59,12 +70,12 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  identificar(palabra: string, devolver:number) {
+  identificar(palabra: string, devolver: number) {
     const input = document.getElementById('buscador') as HTMLInputElement;
     const value = input.value;
     const index = palabra.toLowerCase().indexOf(value.toLowerCase());
     let palabras = [];
-    palabras.push(palabra.substring(0, index)) ;
+    palabras.push(palabra.substring(0, index));
     palabras.push(palabra.substring(index, index + value.length));
     palabras.push(palabra.substring(index + value.length));
     return palabras[devolver];
@@ -72,8 +83,16 @@ export class HeaderComponent implements OnInit {
 
   navegar(url: string) {
     this.itemService.completar(url).subscribe((res: Item) => {
-      this.router.navigate(["/items/"+res.id.toString()]);
+      this.router.navigate(["/items/" + res.id.toString()]);
     });
   }
 
+  buscarResultados() {
+    const input = document.getElementById("buscador") as HTMLInputElement;
+    const value = input.value;
+    console.log(value);
+    if (value.length > 0) {
+      this.router.navigate(["/busqueda/" + value]);
+    }
+  }
 }

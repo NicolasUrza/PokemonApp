@@ -12,7 +12,7 @@
                 <input type="search" class="form-control buscador col-10 col-md-11" [ngClass]="{'buscando': BuscadorActivo}" id="buscador" placeholder="Buscar"
                     aria-label="Search">
 
-                <button class="btn btn-search col-2 col-md-1 icono-busqueda">
+                <button class="btn btn-search col-2 col-md-1 icono-busqueda" (click)="buscarResultados()">
                     <fa-icon [icon]="faSearch"></fa-icon>
                 </button>
             </div>

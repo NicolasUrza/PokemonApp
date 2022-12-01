@@ -10,6 +10,7 @@ import { ItemsComponent } from './components/items/items.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ItemDescripcionComponent } from './components/item-descripcion/item-descripcion.component';
+import { ResultadosComponent } from './components/resultados/resultados.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { ItemDescripcionComponent } from './components/item-descripcion/item-des
     PokemonComponent,
     ItemsComponent,
     InicioComponent,
-    ItemDescripcionComponent
+    ItemDescripcionComponent,
+    ResultadosComponent
   ],
   imports: [
     BrowserModule,

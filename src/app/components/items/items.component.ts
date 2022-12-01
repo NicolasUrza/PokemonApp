@@ -24,7 +24,6 @@ export class ItemsComponent implements OnInit {
   ngOnInit(): void {
     // buscamos los items para mostrar
     this.buscarItems(0);
-    
   }
 
   buscarItem(id: string) {  
@@ -44,8 +43,11 @@ export class ItemsComponent implements OnInit {
   buscarItems(cambioPagina: number) {
     this.items = [];
     const cantItems = "24";
+    console.log("pagina: " + this.Pagina);
     this.Pagina += cambioPagina;
+    console.log("pagina despues: " + this.Pagina);
     const avance = (this.Pagina - 1) * 24 + "";
+    console.log("avance" + avance);
     this.itemService.get(cantItems, avance).subscribe((res: any) => {
       this.i = res.results;
       this.RegistrosTotales = res.count;
@@ -100,7 +102,9 @@ export class ItemsComponent implements OnInit {
     //retorno el nombre
     return nombre;
   }
-
+  redondear(numero: number): number {
+    return Math.ceil(numero);
+  }
   descripciones(item: Item): VersionGroupFlavorText[] {
     // array de versionGrouplavorText
     let items: VersionGroupFlavorText[] = [];
@@ -122,7 +126,13 @@ export class ItemsComponent implements OnInit {
     this.calcularCantPaginas(event.target.innerWidth);
 
   }
-
+  obtenerUltimoindice(): number {
+    let indice:number=0;
+    this.paginas.forEach(element => {
+      indice=element;
+    });;
+    return indice;
+  }
   calcularCantPaginas(pageWidth: number){
     if(pageWidth<768){
       this.paginas = this.RegistrosTotales / 24 > 5 ? this.range(5) : this.range(this.RegistrosTotales / 24);

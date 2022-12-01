@@ -32,6 +32,7 @@ export class ItemDescripcionComponent implements OnInit {
   buscarItem(id: string): void {
     this.itemService.getbyid(id).subscribe((res: Item) => { this.item = res });
     }
+    
     /**
    * 
    * @param oracion string a convertir
@@ -67,5 +68,9 @@ export class ItemDescripcionComponent implements OnInit {
       });
       //retorno el nombre
       return nombre;
+    }
+
+    volver(): void {
+      this.location.back();
     }
 }
