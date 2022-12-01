@@ -7,9 +7,6 @@ article {
 .contenido {
     padding: 1em;
     padding-top: 2em;
-    border-radius: 0px 0px 35px 35px;
-    -moz-border-radius: 0px 0px 35px 35px;
-    -webkit-border-radius: 0px 0px 35px 35px;
     color: black;
 
 }
