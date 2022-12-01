@@ -31,4 +31,5 @@ header {
     border-radius: 35px 35px 35px 35px;
     -moz-border-radius: 35px 35px 35px 35px;
     -webkit-border-radius: 35px 35px 35px 35px;
+    max-width: 90%;
 }

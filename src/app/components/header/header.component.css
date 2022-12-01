@@ -84,9 +84,11 @@ busqueda {
 }
 
 @media (max-width: 768px) {
-    icono-busqueda {
-        font-size: 0.5em;
+    .icono-busqueda {
+        font-size: 0.8em;
     }
-    
+    .logo{
+        width: 100%;
+    }
 }
     
