@@ -1,14 +1,18 @@
 article {
     background-color: transparent;
     padding: 1em;
-    color: antiquewhite;
 }
 
 .contenido {
     padding: 1em;
     padding-top: 2em;
     color: black;
-
+    border-radius: 0px 0px 35px 35px;
+}
+.contenido-tabla{
+    padding: 1em;
+    padding-top: 2em;
+    color: black;
 }
 
 .fondoBlanco {
@@ -17,9 +21,6 @@ article {
 
 .inicio {
 
-    border-radius: 35px 35px 35px 35px;
-    -moz-border-radius: 35px 35px 35px 35px;
-    -webkit-border-radius: 35px 35px 35px 35px;
     max-width: 90%;
 }
 .llenar {
