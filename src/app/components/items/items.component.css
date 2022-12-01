@@ -26,34 +26,12 @@ article{
     border: 0px solid #000000;
     
 }
-@media (max-width: 768px) {
-.imagen {
-    padding: 1em;
-    background-color: brown;
-    border-radius:  35px 35px  0px 0px;
-    -moz-border-radius:  35px  35px  0px 0px;
-    -webkit-border-radius: 35px 35px  0px 0px;
-}}
-
-@media (min-width: 768px) {
-    .imagen {
-    padding: 1em;
-    background-color: brown;
-    border-radius: 35px 0px 0px 35px  ;
-    -moz-border-radius: 35px 0px 0px  35px  ;
-    -webkit-border-radius: 35px 0px 0px 35px  ;
-}
+a{
+    color: antiquewhite;
+    text-decoration: none;
 }
 
-.caracteristicas{
-    display: inline; 
-    align-items: left; 
 
-    font-size: 1.5em;
-}
-.descripcion {
-    padding:1.5em
-}
 .item{
     padding: 1em;
 }
@@ -84,10 +62,7 @@ article{
     color: antiquewhite;
 
 }
-section{
-    background-color: #000000;
-    height: 30em;
-}
+
 
 .btn-volver{
     background-color: #c7b510d8;
@@ -104,26 +79,4 @@ section{
     align-items: left; 
     justify-content: left;
     padding: 1em;
-}
-
-.table-title{
-    background-color: #ff5e5e;
-    color: antiquewhite;
-}
-.fila{
-    background-color: #b11717;
-    color: antiquewhite;
-}
-@media (min-width: 768px) {
-  
-.centro-pantalla {
-    margin-top: 50%;
-}}
-
-hr {
-    border: none;
-    height: 5px;
-    /* Set the hr color */
-    color: antiquewhite; /* old IE */
-    background-color: antiquewhite; /* Modern Browsers */
 }

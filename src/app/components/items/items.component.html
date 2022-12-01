@@ -1,21 +1,23 @@
 <article>
-    <!-- mostrar todos los items-->
-    <div class="container text-center contenido titulos" *ngIf="!mostrarUno">
+    <!--titulo-->
+    <div class="container text-center contenido titulos">
 
         <h1 class="titulo">Items
         </h1>
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" width="80px"
             height="80px" alt="Pokemon" style="padding-bottom:5px">
     </div>
-    <div class="container text-center contenido" *ngIf="!mostrarUno">
+    <!-- mostrar todos los items-->
+    <div class="container text-center contenido" >
         <div class="row">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 item" *ngFor="let it of items">
-                <a (click)="buscarItem(it.id.toString())">
+                <a routerLink="/items/{{it.id}}">
                     <img src={{it.sprites.default}} alt="imagen de {{it.name}}" width="45%" class="img-fluid">
                     <h5>{{capitalizar(buscarNombre(it).replaceAll("-", " "))}}</h5>
                 </a>
             </div>
         </div>
+        <!--paginador-->
         <div class="paginador">
             <div class="row text-center">
                 <div class="col-12">
@@ -47,66 +49,5 @@
             </div>
         </div>
     </div>
-    <!-- mostrar un item-->
-
-    <div class="container  contenido" *ngIf="mostrarUno">
-        <div class="row">
-            <div class="col-12 col-md-6 imagen text-center">
-                <div class="botones">
-                    <button class="btn btn-lg btn-primary btn-volver" (click)="mostrarUno=false">
-                        <fa-icon [icon]="faCircleArrowLeft"></fa-icon> Volver
-                    </button>
-                </div>
-                <div class="col-12 centro-pantalla">
-                    <img src={{item.sprites.default}} width="20%" alt={{item.name}}>
-
-
-                    <h1 class="nombreItem">{{capitalizar(buscarNombre(item).replaceAll("-", " "))}}</h1>
-                </div>
-
-            </div>
-            <div class="col-12 col-md-6 descripcion">
-                <h1 class="text-center">Descripcion</h1>
-                <hr style="font-size: 2em;">
-                <div class="caracteristicas">
-                    <p>Categoria: {{capitalizar(item.category.name.replaceAll("-", " "))}}</p>
-                    <p>Costo: {{item.cost}} pk</p>
-                    <p></p>
-                    <p *ngIf="item.fling_power!= null">Poder de lanzamiento: {{item.fling_power }} </p>
-                    <p *ngIf="item.fling_effect!= null">Efecto de lanzamiento: {{item.fling_effect.name}} </p>
-                    <div *ngIf="item.attributes!=null && item.attributes.length>0">
-                        <p>Atributos: </p>
-                        <ul>
-                            <li *ngFor="let a of item.attributes">{{a.name}}</li>
-                        </ul>
-                    </div>
-                    <div *ngIf="item.flavor_text_entries!=null && item.flavor_text_entries.length>0">
-                        <p>Descripcion: </p>
-                        <div *ngFor="let a of descripciones(item)">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" class="table-title">
-                                            {{capitalizar(a.version_group.name.replaceAll("-"," "))}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr >
-                                        <td class="fila">{{a.text }}</td>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+    
 </article>

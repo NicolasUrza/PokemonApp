@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="resultados col-11" id="resultados" [ngClass]="{'inactivo': !BuscadorActivo}">
-                    <ul *ngFor="let resultado of resultadosBusqueda">
+                    <ul class ="col-12" *ngFor="let resultado of resultadosBusqueda">
                         <li class="resultado {{resultado.name}}" (click)="navegar(resultado.url)">
                              {{identificar(resultado.name, 0)}}<span class="resaltado">{{identificar(resultado.name,1)}}</span>{{identificar(resultado.name,2)}}
                             </li>

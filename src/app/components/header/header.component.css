@@ -42,6 +42,7 @@ busqueda {
 
 .resultados {
     max-height: 280px;
+    padding: 0;
     overflow-y: auto;
     opacity: 1;
     position: absolute;
@@ -52,11 +53,12 @@ busqueda {
 
 .resultado{
     list-style: none;
+    margin-left: -12px;
+
     color:  #2b343b;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding:8px;
     width: 100%;
-    display: block;
+    display: flex;
 }
 
 .resultado:hover{
