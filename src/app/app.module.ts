@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ItemDescripcionComponent } from './components/item-descripcion/item-descripcion.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
+import { TituloComponent } from './components/titulo/titulo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { ResultadosComponent } from './components/resultados/resultados.componen
     ItemsComponent,
     InicioComponent,
     ItemDescripcionComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    TituloComponent
   ],
   imports: [
     BrowserModule,

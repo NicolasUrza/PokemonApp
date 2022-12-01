@@ -24,6 +24,8 @@ article{
     -moz-border-radius: 35px 35px 35px 35px;
     -webkit-border-radius: 35px 35px 35px 35px;
     border: 0px solid #000000;
+    padding-right: 1em;
+    padding-left: 1em;
     
 }
 a{
@@ -33,8 +35,22 @@ a{
 
 
 .item{
-    padding: 1em;
+    padding: 0; 
 }
+.item a {
+
+    margin-bottom:1em;
+    width: 100%;
+}
+.item a img, .item a h5{
+    margin: 0;
+}
+.item a img {
+    object-fit: contain;
+    position: relative;
+    margin-top: 1em;
+}
+
 .item:hover {
     border-radius: 35px 35px 35px 35px;
     -moz-border-radius: 35px 35px 35px 35px;

@@ -6,6 +6,7 @@ import { Pagina } from 'src/app/interfaces/pagina';
 import { ItemService } from 'src/app/services/item.service';
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { VersionGroupFlavorText } from 'src/app/interfaces/version-group-flavor-text';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
@@ -20,7 +21,8 @@ export class ItemsComponent implements OnInit {
   mostrarUno = false;
   Pagina = 1;
   paginas!: number[];
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, 
+    private router:Router) { }
   ngOnInit(): void {
     // buscamos los items para mostrar
     this.buscarItems(0);
@@ -140,5 +142,9 @@ export class ItemsComponent implements OnInit {
     else{
       this.paginas = this.RegistrosTotales / 24 > 10 ? this.range(10) : this.range(this.RegistrosTotales / 24);
     }
+  }
+
+  navegar(url:string){
+    this.router.navigate([url]);
   }
 }
