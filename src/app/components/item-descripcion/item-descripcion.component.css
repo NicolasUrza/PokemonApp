@@ -1,21 +1,3 @@
-
-
-article{
-    background-color: transparent;
-    padding: 1em;
-}
-.titulo{
-    font-size: 4em;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 0.25em;
-}
-.titulos{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5em;
-
-}
 .contenido{
     background-color: #eb3740;
     color: antiquewhite;
@@ -24,6 +6,7 @@ article{
     -moz-border-radius: 35px 35px 35px 35px;
     -webkit-border-radius: 35px 35px 35px 35px;
     border: 0px solid #000000;
+
     
 }
 @media (max-width: 768px) {
@@ -126,4 +109,9 @@ hr {
     /* Set the hr color */
     color: antiquewhite; /* old IE */
     background-color: antiquewhite; /* Modern Browsers */
+}
+
+.espaciado{
+    margin-top: 1.5 em;
+    margin-bottom: 1.5 em;
 }

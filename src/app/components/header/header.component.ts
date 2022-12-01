@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Item } from 'src/app/interfaces/item';
 import { NamedAPIResource } from 'src/app/interfaces/named-apiresource';
 import { ItemService } from 'src/app/services/item.service';
 @Component({
@@ -12,7 +14,7 @@ export class HeaderComponent implements OnInit {
   resultados: NamedAPIResource[] = [];
   resultadosBusqueda: NamedAPIResource[] = [];
   BuscadorActivo: boolean = false;
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private router: Router) { }
 
   ngOnInit(): void {
     this.cargarResultados();
@@ -43,6 +45,7 @@ export class HeaderComponent implements OnInit {
   }
   // event listener si deja de estar en focus
   @HostListener('focusout') onfocusout() {
+    
     this.BuscadorActivo = false;
   }
   // event listener si se hace click 
@@ -53,6 +56,7 @@ export class HeaderComponent implements OnInit {
         this.BuscadorActivo = true;
       }
     }
+
   }
 
   identificar(palabra: string, devolver:number) {
@@ -66,5 +70,10 @@ export class HeaderComponent implements OnInit {
     return palabras[devolver];
   }
 
+  navegar(url: string) {
+    this.itemService.completar(url).subscribe((res: Item) => {
+      this.router.navigate(["/items/"+res.id.toString()]);
+    });
+  }
 
 }

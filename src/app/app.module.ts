@@ -9,13 +9,15 @@ import { PokemonComponent } from "./components/pokemon/pokemon.component";
 import { ItemsComponent } from './components/items/items.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { ItemDescripcionComponent } from './components/item-descripcion/item-descripcion.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PokemonComponent,
     ItemsComponent,
-    InicioComponent
+    InicioComponent,
+    ItemDescripcionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 article {
-    background-color: #fde82bd8;
+    background-color: transparent;
     padding: 1em;
     color: antiquewhite;
 }
@@ -10,11 +10,11 @@ header {
     border-radius: 35px 35px 0px 0px;
     -moz-border-radius: 35px 35px 0px 0px;
     -webkit-border-radius: 35px 35px 0px 0px;
+    color: rgb(247, 245, 245);
 }
 
 .contenido {
-    padding: 1.5em;
-    margin-bottom: 1.5em;
+    padding: 1em;
     border-radius: 0px 0px 35px 35px;
     -moz-border-radius: 0px 0px 35px 35px;
     -webkit-border-radius: 0px 0px 35px 35px;
@@ -28,8 +28,6 @@ header {
 
 .inicio {
 
-    margin-bottom: 1.5em;
-    margin-top: 1.5em;
     border-radius: 35px 35px 35px 35px;
     -moz-border-radius: 35px 35px 35px 35px;
     -webkit-border-radius: 35px 35px 35px 35px;

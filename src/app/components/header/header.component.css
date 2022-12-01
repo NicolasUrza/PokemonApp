@@ -1,4 +1,4 @@
-@import "../../../../node_modules/bootstrap";
+
 
 .buscador {
     background-color: #fde82bd8;
@@ -72,3 +72,18 @@ busqueda {
     background-color: #c0bd23;
     color: rgb(95, 95, 95);
 }
+
+.resultados.inactivo {
+    visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
+
+}
+
+@media (max-width: 768px) {
+    icono-busqueda {
+        font-size: 0.5em;
+    }
+    
+}
+    
