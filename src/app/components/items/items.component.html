@@ -1,6 +1,7 @@
 <article class="container">
     <!--titulo-->
-    <app-titulo class="col-12 llenar" titulo="Items" imagenURL="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"></app-titulo>
+    <app-titulo class="col-12 llenar" titulo="Items"
+        imagenURL="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"></app-titulo>
     <!-- mostrar todos los items-->
     <div class="container text-center contenido">
         <div class="row">
@@ -25,27 +26,39 @@
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
+
+                            <!--inicio del paginador-->
                             <li class="page-item indicePagina" *ngIf="Pagina>1" (click)="buscarItems(-1)">
                                 <a class="page-link indicePagina" aria-label="Previous">
                                     << </a>
                             </li>
+                            <li class="page-item indicePagina" *ngIf="mostrarInicio" (click)="buscarItems(-Pagina+1)"><a
+                                    class="page-link indicePagina">1</a></li>
+                            <li class="page-item indicePagina" *ngIf="mostrarInicio"
+                                (click)="buscarItems(-Pagina+paginas[0]-1)"><a class="page-link indicePagina">...</a>
+                            </li>
+
+                            <!--rango de paginas-->
                             <div *ngFor="let j of paginas">
                                 <li class="page-item indicePagina" [ngClass]="{'active':j==Pagina}"
                                     (click)="buscarItems(-Pagina+j)" *ngIf="j!=0">
                                     <a class="page-link indicePagina" [ngClass]="{'active':j==Pagina}">{{j}}</a>
                             </div>
-                            <li class="page-item indicePagina" *ngIf="RegistrosTotales/24>10"
+
+
+                            <!--final del paginador-->
+                            <li class="page-item indicePagina" *ngIf="mostrarFinal"
                                 (click)="buscarItems(-Pagina+obtenerUltimoindice()+1)"><a
                                     class="page-link indicePagina">...</a></li>
                             <li class="page-item indicePagina"
-                                [ngClass]="{'active':Pagina == redondear(RegistrosTotales/24)}"
-                                *ngIf="RegistrosTotales/24>10"
+                                [ngClass]="{'active':Pagina == redondear(RegistrosTotales/24)}" *ngIf="mostrarFinal"
                                 (click)="buscarItems(-Pagina+redondear(RegistrosTotales/24))">
                                 <a class="page-link indicePagina"
                                     [ngClass]="{'active':Pagina == redondear(RegistrosTotales/24)}">
                                     {{redondear(RegistrosTotales/24)}} </a>
                             </li>
-                            <li class="page-item indicePagina" (click)="buscarItems(1)">
+                            <li class="page-item indicePagina" (click)="buscarItems(1)"
+                                *ngIf="Pagina != redondear(RegistrosTotales/24)">
                                 <a class="page-link indicePagina" aria-label="Next">
                                     >>
                                 </a>

@@ -47,6 +47,10 @@ a{
     cursor: pointer;
 }
 
+.paginador{
+    padding-top: 1.5em;
+}
+
 .indicePagina{
     font-size: 1.2em;
     color: rgb(18, 18, 53);

@@ -21,20 +21,22 @@ export class ItemsComponent implements OnInit {
   mostrarUno = false;
   Pagina = 1;
   paginas!: number[];
-  constructor(private itemService: ItemService, 
-    private router:Router) { }
+  mostrarFinal=true;
+  mostrarInicio=false;
+  constructor(private itemService: ItemService,
+    private router: Router) { }
   ngOnInit(): void {
     // buscamos los items para mostrar
     this.buscarItems(0);
   }
 
-  buscarItem(id: string) {  
+  buscarItem(id: string) {
     this.item = null;
     this.mostrarUno = true;
     this.itemService.getbyid(id).subscribe((res: Item) => { this.item = res });
   }
 
-  BuscarEfectoArrojar(url: string):any {
+  BuscarEfectoArrojar(url: string): any {
     let efecto = null;
     this.itemService.completarEfectoArrojar(url).subscribe((res: any) => {
 
@@ -71,7 +73,7 @@ export class ItemsComponent implements OnInit {
    * @param step 
    * @returns 
    */
-  range(start: number, stop:number = undefined, step = 1) {
+  range(start: number, stop: number = undefined, step = 1) {
     // si no hay un stop, entonces el stop es el start e inicio desde 0
     const startArray = stop === undefined ? 0 : start;
     const stopArray = stop === undefined ? start : stop;
@@ -118,33 +120,63 @@ export class ItemsComponent implements OnInit {
     });
     return items;
   }
-/**
- * cuando la ventana cambia de tamaño se ejecuta este metodo
- * cambia la cantidad de paginas que se muestra en el html
- * @param event evento de resize de la ventana
- */
+  /**
+   * cuando la ventana cambia de tamaño se ejecuta este metodo
+   * cambia la cantidad de paginas que se muestra en el html
+   * @param event evento de resize de la ventana
+   */
   @HostListener('window:resize', ['$event'])
-  onResize(event: any ){
+  onResize(event: any) {
     this.calcularCantPaginas(event.target.innerWidth);
 
   }
   obtenerUltimoindice(): number {
-    let indice:number=0;
+    let indice: number = 0;
     this.paginas.forEach(element => {
-      indice=element;
+      indice = element;
     });;
     return indice;
   }
-  calcularCantPaginas(pageWidth: number){
-    if(pageWidth<768){
-      this.paginas = this.RegistrosTotales / 24 > 5 ? this.range(5) : this.range(this.RegistrosTotales / 24);
+  calcularCantPaginas(pageWidth: number) {
+    if (pageWidth < 768) {
+      let start = 1
+      let stop = 5;
+      this.mostrarInicio=false;
+      if (this.Pagina - 2 > 1) {
+        start = this.Pagina - 2;
+        stop = this.Pagina + 2;
+        this.mostrarInicio=true;
+        this.mostrarFinal=true;
+      }
+      if (this.Pagina + 2 > this.RegistrosTotales / 24) {
+        start = this.redondear(this.RegistrosTotales / 24) - 4;
+        stop = this.redondear(this.RegistrosTotales / 24);
+        this.mostrarFinal = false;
+        this.mostrarInicio = true;
+      }
+      this.paginas = this.RegistrosTotales / 24 > 5 ? this.range(start, stop) : this.range(this.RegistrosTotales / 24);
     }
-    else{
-      this.paginas = this.RegistrosTotales / 24 > 10 ? this.range(10) : this.range(this.RegistrosTotales / 24);
+    else {
+      let start = 1
+      let stop = 10;
+      this.mostrarInicio=false;
+      if (this.Pagina - 5 > 1) {
+        start = this.Pagina - 5;
+        stop = this.Pagina + 4;
+        this.mostrarFinal=true;
+        this.mostrarInicio=true;
+      }
+      if (this.Pagina + 5 > this.RegistrosTotales / 24) {
+        start = this.redondear(this.RegistrosTotales / 24) - 9;
+        stop = this.redondear(this.RegistrosTotales / 24);
+        this.mostrarFinal = false;
+        this.mostrarInicio = true;
+      }
+      this.paginas = this.RegistrosTotales / 24 > 10 ? this.range(start, stop) : this.range(this.RegistrosTotales / 24);
     }
   }
 
-  navegar(url:string){
+  navegar(url: string) {
     this.router.navigate([url]);
   }
 }
