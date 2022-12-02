@@ -1,7 +1,11 @@
 <div class="llenar">
 
     <header>
-        <h1>{{titulo}}</h1>
+        <div class="titulos">
+            <h1>{{titulo}}</h1>
+            <img src={{imagenURL}} width="80px" *ngIf="imagenURL != null"
+                height="80px" alt="Pokemon" style="padding-bottom:5px">
+        </div>
         <div class="col-12 contenedor-circulo">
             <div class="circulo text-center">
                 <div class="col-11 circulo-interior">
