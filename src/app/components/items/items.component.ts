@@ -18,32 +18,24 @@ export class ItemsComponent implements OnInit {
   items: Item[] = [];
   RegistrosTotales!: number;
   item: Item;
-  mostrarUno = false;
   Pagina = 1;
   paginas!: number[];
   mostrarFinal=true;
   mostrarInicio=false;
+  
   constructor(private itemService: ItemService,
     private router: Router) { }
+
   ngOnInit(): void {
     // buscamos los items para mostrar
     this.buscarItems(0);
   }
 
-  buscarItem(id: string) {
-    this.item = null;
-    this.mostrarUno = true;
-    this.itemService.getbyid(id).subscribe((res: Item) => { this.item = res });
-  }
 
-  BuscarEfectoArrojar(url: string): any {
-    let efecto = null;
-    this.itemService.completarEfectoArrojar(url).subscribe((res: any) => {
-
-    });
-    return efecto;
-  }
-
+  /**
+   * busca los items de la pagina solicitada en el paginador
+   * @param cambioPagina : cantidad en la cambia la que se modifica la pagina actual
+   */
   buscarItems(cambioPagina: number) {
     this.items = [];
     const cantItems = "24";
@@ -60,7 +52,11 @@ export class ItemsComponent implements OnInit {
       this.completar();
     });
   }
-
+  /**
+   * completa los datos de los items
+   * guardados en la variable this.i
+   * y los guarda en la variable this.items
+   */
   completar() {
     for (let j = 0; j < this.i.length; j++) {
       this.itemService.completar(this.i[j].url).subscribe((res: Item) => { this.items.push(res); });
@@ -69,9 +65,9 @@ export class ItemsComponent implements OnInit {
   /**
    * 
    * @param start indice de inicio
-   * @param stop 
-   * @param step 
-   * @returns 
+   * @param stop indice de fin
+   * @param step cantidad de pasos para llegar de inicio a fin
+   * @returns un array con los numeros desde start hasta stop con un paso de step
    */
   range(start: number, stop: number = undefined, step = 1) {
     // si no hay un stop, entonces el stop es el start e inicio desde 0
@@ -93,7 +89,11 @@ export class ItemsComponent implements OnInit {
     }
     return palabras.join(" ");
   }
-
+  /**
+   * busca el nombre en español de un item
+   * @param item: elemento de tipo item
+   * @returns el nombre en español del item
+   */
   buscarNombre(item: Item): string {
     //por defecto el nombre esta en ingles
     let nombre = item.name;
@@ -106,20 +106,17 @@ export class ItemsComponent implements OnInit {
     //retorno el nombre
     return nombre;
   }
+
+  /**
+   * redondea un numero hacia arriba, es decir, al entero siguiente
+   * @param numero: numero de coma flotante a redondear
+   * @returns numero redondeado
+   */
   redondear(numero: number): number {
     return Math.ceil(numero);
   }
-  descripciones(item: Item): VersionGroupFlavorText[] {
-    // array de versionGrouplavorText
-    let items: VersionGroupFlavorText[] = [];
+ 
 
-    item.flavor_text_entries.forEach(element => {
-      if (element.language.name == "es") {
-        items.push(element);
-      }
-    });
-    return items;
-  }
   /**
    * cuando la ventana cambia de tamaño se ejecuta este metodo
    * cambia la cantidad de paginas que se muestra en el html
@@ -130,6 +127,10 @@ export class ItemsComponent implements OnInit {
     this.calcularCantPaginas(event.target.innerWidth);
 
   }
+  /**
+   * busca en el array de paginas el ultimo elemento
+   * @returns el ultimo indice de la variable paginas
+   */
   obtenerUltimoindice(): number {
     let indice: number = 0;
     this.paginas.forEach(element => {
@@ -137,6 +138,9 @@ export class ItemsComponent implements OnInit {
     });;
     return indice;
   }
+  /**
+   * calcula el rango de paginas para el paginador y lo guarda en la variable paginas
+   */
   calcularCantPaginas(pageWidth: number) {
     if (pageWidth < 768) {
       let start = 1
