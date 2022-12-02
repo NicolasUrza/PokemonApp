@@ -144,16 +144,16 @@ export class ItemsComponent implements OnInit {
   calcularCantPaginas(pageWidth: number) {
     if (pageWidth < 768) {
       let start = 1
-      let stop = 5;
+      let stop = 4;
       this.mostrarInicio=false;
       if (this.Pagina - 2 > 1) {
         start = this.Pagina - 2;
-        stop = this.Pagina + 2;
+        stop = this.Pagina + 1;
         this.mostrarInicio=true;
         this.mostrarFinal=true;
       }
       if (this.Pagina + 2 > this.RegistrosTotales / 24) {
-        start = this.redondear(this.RegistrosTotales / 24) - 4;
+        start = this.redondear(this.RegistrosTotales / 24) - 3;
         stop = this.redondear(this.RegistrosTotales / 24);
         this.mostrarFinal = false;
         this.mostrarInicio = true;
@@ -164,14 +164,14 @@ export class ItemsComponent implements OnInit {
       let start = 1
       let stop = 10;
       this.mostrarInicio=false;
-      if (this.Pagina - 5 > 1) {
-        start = this.Pagina - 5;
+      if (this.Pagina - 4 > 1) {
+        start = this.Pagina - 4;
         stop = this.Pagina + 4;
         this.mostrarFinal=true;
         this.mostrarInicio=true;
       }
-      if (this.Pagina + 5 > this.RegistrosTotales / 24) {
-        start = this.redondear(this.RegistrosTotales / 24) - 9;
+      if (this.Pagina + 4 > this.RegistrosTotales / 24) {
+        start = this.redondear(this.RegistrosTotales / 24) - 8;
         stop = this.redondear(this.RegistrosTotales / 24);
         this.mostrarFinal = false;
         this.mostrarInicio = true;
