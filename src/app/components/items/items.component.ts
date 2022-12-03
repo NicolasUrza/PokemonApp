@@ -20,30 +20,31 @@ export class ItemsComponent implements OnInit {
   item: Item;
   Pagina = 1;
   paginas!: number[];
-  mostrarFinal=true;
-  mostrarInicio=false;
-  
+  mostrarFinal = true;
+  mostrarInicio = false;
+
   constructor(private itemService: ItemService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // buscamos los items para mostrar
-    this.buscarItems(0);
+    if (this.route.snapshot.queryParamMap.get('pagina') == null) {
+      this.navegarPagina(1);
+    } else {
+      this.buscarItems();
+    }
   }
 
 
   /**
    * busca los items de la pagina solicitada en el paginador
-   * @param cambioPagina : cantidad en la cambia la que se modifica la pagina actual
    */
-  buscarItems(cambioPagina: number) {
+  buscarItems() {
     this.items = [];
     const cantItems = "24";
-    console.log("pagina: " + this.Pagina);
-    this.Pagina += cambioPagina;
-    console.log("pagina despues: " + this.Pagina);
+    this.Pagina = this.route.snapshot.queryParamMap.get('pagina') != null ? parseInt(this.route.snapshot.queryParamMap.get('pagina')) : 1;
     const avance = (this.Pagina - 1) * 24 + "";
-    console.log("avance" + avance);
     this.itemService.get(cantItems, avance).subscribe((res: any) => {
       this.i = res.results;
       this.RegistrosTotales = res.count;
@@ -115,7 +116,7 @@ export class ItemsComponent implements OnInit {
   redondear(numero: number): number {
     return Math.ceil(numero);
   }
- 
+
 
   /**
    * cuando la ventana cambia de tamaño se ejecuta este metodo
@@ -145,12 +146,12 @@ export class ItemsComponent implements OnInit {
     if (pageWidth < 768) {
       let start = 1
       let stop = 4;
-      this.mostrarInicio=false;
+      this.mostrarInicio = false;
       if (this.Pagina - 2 > 1) {
         start = this.Pagina - 2;
         stop = this.Pagina + 1;
-        this.mostrarInicio=true;
-        this.mostrarFinal=true;
+        this.mostrarInicio = true;
+        this.mostrarFinal = true;
       }
       if (this.Pagina + 2 > this.RegistrosTotales / 24) {
         start = this.redondear(this.RegistrosTotales / 24) - 3;
@@ -163,12 +164,12 @@ export class ItemsComponent implements OnInit {
     else {
       let start = 1
       let stop = 10;
-      this.mostrarInicio=false;
+      this.mostrarInicio = false;
       if (this.Pagina - 4 > 1) {
         start = this.Pagina - 4;
         stop = this.Pagina + 4;
-        this.mostrarFinal=true;
-        this.mostrarInicio=true;
+        this.mostrarFinal = true;
+        this.mostrarInicio = true;
       }
       if (this.Pagina + 4 > this.RegistrosTotales / 24) {
         start = this.redondear(this.RegistrosTotales / 24) - 8;
@@ -183,8 +184,14 @@ export class ItemsComponent implements OnInit {
   navegar(url: string) {
     this.router.navigate([url]);
   }
-  ordenar(items: Item[]): Item[]{
+  ordenar(items: Item[]): Item[] {
     //ordeno el array de items por el id
     return items.sort((a, b) => a.id - b.id);
+  }
+
+  navegarPagina(pagina: number) {
+    this.router.navigate(['/items'], { queryParams: { pagina: pagina } }).finally(() => {
+      this.buscarItems();
+    });
   }
 }

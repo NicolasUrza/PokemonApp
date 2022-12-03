@@ -35,6 +35,7 @@ a{
 .item a img {
     object-fit: contain;
     position: relative;
+    color: black;
     margin-top: 1em;
 }
 

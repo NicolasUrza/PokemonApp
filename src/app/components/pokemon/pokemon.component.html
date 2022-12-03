@@ -30,36 +30,36 @@
                         <ul class="pagination justify-content-center">
 
                             <!--inicio del paginador-->
-                            <li class="page-item indicePagina" *ngIf="Pagina>1" (click)="buscarPokemon(-1)">
+                            <li class="page-item indicePagina" *ngIf="Pagina>1" (click)="navegarPagina(Pagina-1)">
                                 <a class="page-link indicePagina" aria-label="Previous">
                                     << </a>
                             </li>
-                            <li class="page-item indicePagina" *ngIf="mostrarInicio" (click)="buscarPokemon(-Pagina+1)"><a
+                            <li class="page-item indicePagina" *ngIf="mostrarInicio" (click)="navegarPagina(1)"><a
                                     class="page-link indicePagina">1</a></li>
                             <li class="page-item indicePagina" *ngIf="mostrarInicio"
-                                (click)="buscarPokemon(-Pagina+paginas[0]-1)"><a class="page-link indicePagina">...</a>
+                                (click)="navegarPagina(paginas[0]-1)"><a class="page-link indicePagina">...</a>
                             </li>
 
                             <!--rango de paginas-->
                             <div *ngFor="let j of paginas">
                                 <li class="page-item indicePagina" [ngClass]="{'active':j==Pagina}"
-                                    (click)="j!=Pagina? buscarPokemon(-Pagina+j): null" *ngIf="j!=0">
+                                    (click)="j!=Pagina? navegarPagina(j): null" *ngIf="j!=0">
                                     <a class="page-link indicePagina" [ngClass]="{'active':j==Pagina}">{{j}}</a>
                             </div>
 
 
                             <!--final del paginador-->
                             <li class="page-item indicePagina" *ngIf="mostrarFinal"
-                                (click)="buscarPokemon(-Pagina+obtenerUltimoindice()+1)"><a
+                                (click)="navegarPagina(obtenerUltimoindice()+1)"><a
                                     class="page-link indicePagina">...</a></li>
                             <li class="page-item indicePagina"
                                 [ngClass]="{'active':Pagina == redondear(RegistrosTotales/24)}" *ngIf="mostrarFinal"
-                                (click)="buscarPokemon(-Pagina+redondear(RegistrosTotales/24))">
+                                (click)="navegarPagina(redondear(RegistrosTotales/24))">
                                 <a class="page-link indicePagina"
                                     [ngClass]="{'active':Pagina == redondear(RegistrosTotales/24)}">
                                     {{redondear(RegistrosTotales/24)}} </a>
                             </li>
-                            <li class="page-item indicePagina" (click)="buscarPokemon(1)"
+                            <li class="page-item indicePagina" (click)="navegarPagina(Pagina+1)"
                                 *ngIf="Pagina != redondear(RegistrosTotales/24)">
                                 <a class="page-link indicePagina" aria-label="Next">
                                     >>

@@ -20,37 +20,37 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonComponent implements OnInit {
   faCircleArrowLeft = faCircleArrowLeft;
   i!: NamedAPIResource[];
-  pokemon: Pokemon[] =[];
+  pokemon: Pokemon[] = [];
   RegistrosTotales!: number;
   item: Item;
   Pagina = 1;
   paginas!: number[];
-  mostrarFinal=true;
-  mostrarInicio=false;
-  
-  constructor(private itemService: ItemService,
+  mostrarFinal = true;
+  mostrarInicio = false;
+
+  constructor(
     private pokemonService: PokemonService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // buscamos los items para mostrar
-    this.buscarPokemon(0);
-
+    // buscamos los pokemon para mostrar
+    //parametro de paginas
+    if (this.route.snapshot.queryParamMap.get('pagina') == null) {
+      this.navegarPagina(1);
+    }else{
+      this.buscarPokemon();
+    }
   }
-
-
   /**
    * busca los items de la pagina solicitada en el paginador
    * @param cambioPagina : cantidad en la cambia la que se modifica la pagina actual
    */
-  buscarPokemon(cambioPagina: number) {
+  buscarPokemon() {
     this.pokemon = [];
     const cantItems = "24";
-    console.log("pagina: " + this.Pagina);
-    this.Pagina += cambioPagina;
-    console.log("pagina despues: " + this.Pagina);
+    this.Pagina = this.route.snapshot.queryParamMap.get('pagina') != null ? parseInt(this.route.snapshot.queryParamMap.get('pagina')) : 1;
     const avance = (this.Pagina - 1) * 24 + "";
-    console.log("avance" + avance);
     this.pokemonService.get(cantItems, avance).subscribe((res: any) => {
       this.i = res.results;
       this.RegistrosTotales = res.count;
@@ -84,7 +84,7 @@ export class PokemonComponent implements OnInit {
     // creo un array de numeros desde start hasta stop con un paso de step
     return Array.from({ length: (stopArray - startArray) / step + 1 }, (_, i) => startArray + (i * step));
   }
-  ordenar(listaPokemon:Pokemon[]): Pokemon[] {
+  ordenar(listaPokemon: Pokemon[]): Pokemon[] {
     return listaPokemon.sort((a, b) => a.id - b.id);
   }
   /**
@@ -108,7 +108,7 @@ export class PokemonComponent implements OnInit {
   redondear(numero: number): number {
     return Math.ceil(numero);
   }
- 
+
 
   /**
    * cuando la ventana cambia de tamaño se ejecuta este metodo
@@ -138,12 +138,12 @@ export class PokemonComponent implements OnInit {
     if (pageWidth < 768) {
       let start = 1
       let stop = 4;
-      this.mostrarInicio=false;
+      this.mostrarInicio = false;
       if (this.Pagina - 2 > 1) {
         start = this.Pagina - 2;
         stop = this.Pagina + 1;
-        this.mostrarInicio=true;
-        this.mostrarFinal=true;
+        this.mostrarInicio = true;
+        this.mostrarFinal = true;
       }
       if (this.Pagina + 2 > this.RegistrosTotales / 24) {
         start = this.redondear(this.RegistrosTotales / 24) - 3;
@@ -156,12 +156,12 @@ export class PokemonComponent implements OnInit {
     else {
       let start = 1
       let stop = 10;
-      this.mostrarInicio=false;
+      this.mostrarInicio = false;
       if (this.Pagina - 4 > 1) {
         start = this.Pagina - 4;
         stop = this.Pagina + 4;
-        this.mostrarFinal=true;
-        this.mostrarInicio=true;
+        this.mostrarFinal = true;
+        this.mostrarInicio = true;
       }
       if (this.Pagina + 4 > this.RegistrosTotales / 24) {
         start = this.redondear(this.RegistrosTotales / 24) - 8;
@@ -177,4 +177,9 @@ export class PokemonComponent implements OnInit {
     this.router.navigate([url]);
   }
 
+  navegarPagina(pagina: number) {
+    this.router.navigate(['/pokemon'], { queryParams: { pagina: pagina } }).finally(() => {
+      this.buscarPokemon();
+    });
+  }
 }
