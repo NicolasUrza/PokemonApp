@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ItemDescripcionComponent } from './components/item-descripcion/item-descripcion.component';
 import { ItemsComponent } from './components/items/items.component';
+import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'items', component: ItemsComponent },
   { path: 'items/:id', component: ItemDescripcionComponent },
   { path: 'busqueda/:res', component: ResultadosComponent },
+  { path: 'pokemon', component: PokemonComponent },
   { path: '**', redirectTo: '' }
 
 ];
@@ -19,7 +21,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 
 }

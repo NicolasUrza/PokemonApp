@@ -12,6 +12,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { ItemDescripcionComponent } from './components/item-descripcion/item-descripcion.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 import { TituloComponent } from './components/titulo/titulo.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { TituloComponent } from './components/titulo/titulo.component';
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent, HeaderComponent]
 })
 export class AppModule { }

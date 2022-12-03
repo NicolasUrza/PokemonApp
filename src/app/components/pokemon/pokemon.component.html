@@ -1,8 +1,73 @@
-<article class="pokemon">
-    
-    <div class="contenido container">
-        {{m.id}}
-        {{m.name}}
-        {{m.order}}
+<article class="container">
+    <!--titulo-->
+    <app-titulo class="col-12 llenar" titulo="Pokemón"
+        imagenURL="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"></app-titulo>
+    <!-- mostrar todos los items-->
+    <div class="container text-center contenido">
+        <div class="row">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 item" *ngFor="let pk of ordenar(pokemon)">
+                <a routerLink="/items/{{pk.id}}">
+                    <div class="col-12">
+                        <img src={{pk.sprites.front_default}}
+                            alt="{{pk.sprites.front_default== null? 'imagen no disponible' :'Imagen de'+ pk.name}}"
+                            width="45%">
+                        <h5>#{{pk.id}} {{capitalizar(pk.name)}}</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!--paginador-->
+        <div class="paginador">
+            <div class="row text-center">
+                <div class="col-12">
+                    <span class="pyBadge">Cantidad de items: {{RegistrosTotales}}</span>
+                </div>
+                <div class="col-12">
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+
+                            <!--inicio del paginador-->
+                            <li class="page-item indicePagina" *ngIf="Pagina>1" (click)="buscarPokemon(-1)">
+                                <a class="page-link indicePagina" aria-label="Previous">
+                                    << </a>
+                            </li>
+                            <li class="page-item indicePagina" *ngIf="mostrarInicio" (click)="buscarPokemon(-Pagina+1)"><a
+                                    class="page-link indicePagina">1</a></li>
+                            <li class="page-item indicePagina" *ngIf="mostrarInicio"
+                                (click)="buscarPokemon(-Pagina+paginas[0]-1)"><a class="page-link indicePagina">...</a>
+                            </li>
+
+                            <!--rango de paginas-->
+                            <div *ngFor="let j of paginas">
+                                <li class="page-item indicePagina" [ngClass]="{'active':j==Pagina}"
+                                    (click)="buscarPokemon(-Pagina+j)" *ngIf="j!=0">
+                                    <a class="page-link indicePagina" [ngClass]="{'active':j==Pagina}">{{j}}</a>
+                            </div>
+
+
+                            <!--final del paginador-->
+                            <li class="page-item indicePagina" *ngIf="mostrarFinal"
+                                (click)="buscarPokemon(-Pagina+obtenerUltimoindice()+1)"><a
+                                    class="page-link indicePagina">...</a></li>
+                            <li class="page-item indicePagina"
+                                [ngClass]="{'active':Pagina == redondear(RegistrosTotales/24)}" *ngIf="mostrarFinal"
+                                (click)="buscarPokemon(-Pagina+redondear(RegistrosTotales/24))">
+                                <a class="page-link indicePagina"
+                                    [ngClass]="{'active':Pagina == redondear(RegistrosTotales/24)}">
+                                    {{redondear(RegistrosTotales/24)}} </a>
+                            </li>
+                            <li class="page-item indicePagina" (click)="buscarPokemon(1)"
+                                *ngIf="Pagina != redondear(RegistrosTotales/24)">
+                                <a class="page-link indicePagina" aria-label="Next">
+                                    >>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
+
 </article>
