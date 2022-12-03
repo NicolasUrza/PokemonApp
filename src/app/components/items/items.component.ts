@@ -183,4 +183,8 @@ export class ItemsComponent implements OnInit {
   navegar(url: string) {
     this.router.navigate([url]);
   }
+  ordenar(items: Item[]): Item[]{
+    //ordeno el array de items por el id
+    return items.sort((a, b) => a.id - b.id);
+  }
 }

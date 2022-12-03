@@ -2,7 +2,7 @@
     <!--titulo-->
     <app-titulo class="col-12 llenar" titulo="Pokemón"
         imagenURL="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"></app-titulo>
-    <!-- mostrar todos los items-->
+    <!-- mostrar todos los Pokemon-->
     <div class="container text-center contenido">
         <div class="row">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 item" *ngFor="let pk of ordenar(pokemon)">
@@ -16,11 +16,13 @@
                 </a>
             </div>
         </div>
+
+
         <!--paginador-->
         <div class="paginador">
             <div class="row text-center">
                 <div class="col-12">
-                    <span class="pyBadge">Cantidad de items: {{RegistrosTotales}}</span>
+                    <span class="pyBadge">Cantidad de Pokemón: {{RegistrosTotales}}</span>
                 </div>
                 <div class="col-12">
 
@@ -41,7 +43,7 @@
                             <!--rango de paginas-->
                             <div *ngFor="let j of paginas">
                                 <li class="page-item indicePagina" [ngClass]="{'active':j==Pagina}"
-                                    (click)="buscarPokemon(-Pagina+j)" *ngIf="j!=0">
+                                    (click)="j!=Pagina? buscarPokemon(-Pagina+j): null" *ngIf="j!=0">
                                     <a class="page-link indicePagina" [ngClass]="{'active':j==Pagina}">{{j}}</a>
                             </div>
 
