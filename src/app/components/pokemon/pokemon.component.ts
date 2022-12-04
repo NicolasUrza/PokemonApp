@@ -1,16 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { EncounterMethodService } from 'src/app/services/encounter-method.service';
-import { EncounterMethod } from "../../interfaces/EncounterMethod";
-import { compileFactoryFunction } from '@angular/compiler';
 import { Item } from 'src/app/interfaces/item';
 import { NamedAPIResource } from 'src/app/interfaces/named-apiresource';
-import { Pagina } from 'src/app/interfaces/pagina';
-import { ItemService } from 'src/app/services/item.service';
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { VersionGroupFlavorText } from 'src/app/interfaces/version-group-flavor-text';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from 'src/app/interfaces/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-pokemon',
   templateUrl: './pokemon.component.html',
@@ -31,26 +26,30 @@ export class PokemonComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit(): void {
     // buscamos los pokemon para mostrar
     //parametro de paginas
     if (this.route.snapshot.queryParamMap.get('pagina') == null) {
       this.navegarPagina(1);
-    }else{
+    } else {
       this.buscarPokemon();
     }
   }
   /**
-   * busca los items de la pagina solicitada en el paginador
-   * @param cambioPagina : cantidad en la cambia la que se modifica la pagina actual
+   * busca los Pokemon de la pagina solicitada en el paginador
    */
   buscarPokemon() {
     this.pokemon = [];
+    //cantidad de pokemon por pagina
     const cantItems = "24";
+    //obtenemos el parametro de la pagina
     this.Pagina = this.route.snapshot.queryParamMap.get('pagina') != null ? parseInt(this.route.snapshot.queryParamMap.get('pagina')) : 1;
     const avance = (this.Pagina - 1) * 24 + "";
+    //buscamos los pokemon y suscribimos a la respuesta
     this.pokemonService.get(cantItems, avance).subscribe((res: any) => {
       this.i = res.results;
       this.RegistrosTotales = res.count;
@@ -179,7 +178,10 @@ export class PokemonComponent implements OnInit {
 
   navegarPagina(pagina: number) {
     this.router.navigate(['/pokemon'], { queryParams: { pagina: pagina } }).finally(() => {
+
       this.buscarPokemon();
-    });
+
+    }
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +12,11 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { ItemDescripcionComponent } from './components/item-descripcion/item-descripcion.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 import { TituloComponent } from './components/titulo/titulo.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InterceptorService } from './services/interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +32,14 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+  {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent, HeaderComponent]
 })
 export class AppModule { }

@@ -26,6 +26,7 @@
     "bootstrap": "4.6",
     "fortawesome": "^0.0.1-security",
     "jquery": "^3.6.1",
+    "ngx-spinner": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
