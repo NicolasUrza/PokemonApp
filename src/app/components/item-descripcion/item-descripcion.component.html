@@ -62,7 +62,7 @@
                         </tr>
                         <tr *ngFor="let a of item.held_by_pokemon">
                             <td class="fila">{{a.pokemon.name}}</td>
-                            <td >
+                            <td class="probabilidades" >
                                 <table *ngFor="let b of a.version_details">
                                     <tr>
                                         <td class="probabilidades">{{b.version.name}}: </td>
