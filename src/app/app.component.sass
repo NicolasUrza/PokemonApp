@@ -1,5 +1,4 @@
 
-
 header
   background-color: #eb3740
   color: antiquewhite
@@ -7,7 +6,7 @@ header
 
 footer
   background-color: #8a181e
-  color: antiquewhite
+  color: rgb(247, 245, 245)
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
   width: 100%
   padding: 1em
@@ -18,5 +17,34 @@ footer p
   padding-top: 1.5em
   padding-bottom: 1.5em
 
+.wrapper
+  display: flex
+  justify-content: center
+  align-items: center 
+.wrapper ul
+  list-style: none
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 0
+  margin: 10px
 
-@import "node_modules/bootstrap/scss/bootstrap.scss"
+.wrapper ul li a
+  color: rgb(247, 245, 245)
+  width: 30px
+  height: 30px
+  margin: 10px
+  padding: 5px
+  padding-left: 7px
+  padding-right: 7px 
+  border-radius: 50%
+  border: 2px solid rgb(247, 245, 245)
+
+
+.wrapper ul li a 
+  &:hover
+    color: #008FFF
+    border: 2px solid #008FFF
+
+
+
