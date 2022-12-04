@@ -15,6 +15,8 @@ export class ItemDescripcionComponent implements OnInit {
 
   faCircleArrowLeft = faCircleArrowLeft;
   item: Item; 
+  mostrarDescripcion = false;
+  mostrarPokemonSalvaje = false;
   constructor(private itemService:ItemService,
     private route: ActivatedRoute,
     private location: Location){

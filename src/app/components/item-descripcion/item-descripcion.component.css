@@ -10,6 +10,9 @@
 
     
 }
+h4 {
+    color: antiquewhite;
+}
 @media (max-width: 768px) {
 .imagen {
     padding: 1em;
