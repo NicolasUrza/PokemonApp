@@ -53,6 +53,27 @@
 
                     </div>
                 </div>
+                <div  *ngIf="item.held_by_pokemon!=null && item.held_by_pokemon.length>0">
+                    <p>Objeto llevado por: </p>
+                    <table class="table table-striped">
+                        <tr>
+                            <th scope="col" class="table-title">Pokemon</th>
+                            <th scope="col" class="table-title">Probabilidad de encuentro</th>
+                        </tr>
+                        <tr *ngFor="let a of item.held_by_pokemon">
+                            <td class="fila">{{a.pokemon.name}}</td>
+                            <td >
+                                <table *ngFor="let b of a.version_details">
+                                    <tr>
+                                        <td class="probabilidades">{{b.version.name}}: </td>
+                                        <td class="probabilidades">{{b.rarity}} %</td>
+                                    </tr>
+                                    
+                                </table>
+                        </tr>
+                    </table>
+                   
+                </div>
 
             </div>
 

@@ -36,13 +36,15 @@
 
 .caracteristicas{
     display: inline; 
-    align-items: left; 
-
+    align-items: left;
     font-size: 1.5em;
 }
 .descripcion {
     padding:1.5em;
     
+}
+table{
+    color: antiquewhite;
 }
 .item{
     padding: 1em;
@@ -123,3 +125,7 @@ hr {
     margin-bottom: 1.5 em;
 }
 
+.probabilidades{
+    margin: 0;
+    padding: 0;
+}
