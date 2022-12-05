@@ -1,9 +1,10 @@
-<div class="container  contenido">
+<article class="container  contenido">
     <!--spinner al cargar-->
     <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
         <p style="font-size: 20px; color: white">Cargando...</p>
     </ngx-spinner>
     <div class="row ">
+        <!--imagen y nombre del pokemon-->
         <div class="col-12 col-md-6 imagen text-center">
             <div class="botones">
                 <button class="btn btn-lg btn-primary btn-volver" (click)="volver()">
@@ -16,18 +17,33 @@
             </div>
 
         </div>
+
+        <!--descripcion del pokemon-->
         <div class="col-12 col-md-6 descripcion">
             <h2 class="text-center">Descripcion</h2>
             <hr style="font-size: 2em;">
             <div class="caracteristicas">
+                <p>Genero en encuentro:</p>
+                <ul> 
+                    <li *ngIf="pokemonDescripcion.tiene_genero">
+
+                    <i class="fa-solid fa-mars" style="color:rgb(53, 53, 185)"></i>
+                    {{pokemonDescripcion.porcentaje_macho}}%
+                    <i class="fa-solid fa-venus" style="color:rgb(255, 100, 234)  ;"></i> {{pokemonDescripcion.porcentaje_hembra}}%
+                    </li>
+                
+                <li *ngIf="!pokemonDescripcion.tiene_genero">No posee un genero</li>
+                </ul>
+                <hr style="font-size: 2em;">
+
 
             </div>
+            <!--tablas -->
             <div *ngIf="pokemonDescripcion.entradas_pokedex !=null && pokemonDescripcion.entradas_pokedex.length>0">
-                <button class="btn btn-lg btn-warning col-12"
-                style="margin-top: 1em; margin-bottom: 1em;"
+                <button class="btn btn-lg btn-warning col-12" style="margin-top: 1em; margin-bottom: 1em;"
                     (click)="mostrarDescripcion = !mostrarDescripcion">
                     <h4>Descripcion en juegos <i class="fa-solid fa-caret-down"></i></h4>
-                    </button>
+                </button>
                 <div *ngFor="let a of pokemonDescripcion.entradas_pokedex">
                     <table *ngIf="mostrarDescripcion" class="table table-striped">
                         <thead>
@@ -46,8 +62,9 @@
 
                 </div>
 
+            </div>
+
         </div>
 
     </div>
-
-</div>
+</article>

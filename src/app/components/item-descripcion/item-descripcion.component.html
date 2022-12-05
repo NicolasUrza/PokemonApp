@@ -3,6 +3,7 @@
     <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
         <p style="font-size: 20px; color: white">Cargando...</p>
     </ngx-spinner>
+    <!--imagen y nombre del item-->
     <div class="row ">
         <div class="col-12 col-md-6 imagen text-center">
             <div class="botones">
@@ -18,6 +19,8 @@
             </div>
 
         </div>
+
+        <!--descripcion del item-->
         <div class="col-12 col-md-6 descripcion">
             <h2 class="text-center">Descripcion</h2>
             <hr style="font-size: 2em;">
@@ -33,6 +36,7 @@
                         <li *ngFor="let a of item.attributes">{{a.name}}</li>
                     </ul>
                 </div>
+                <hr style="font-size: 2em;">
                 <div *ngIf="item.flavor_text_entries!=null && item.flavor_text_entries.length>0">
                     <button class="btn btn-lg btn-warning col-12"
                     style="margin-top: 1em; margin-bottom: 1em;"

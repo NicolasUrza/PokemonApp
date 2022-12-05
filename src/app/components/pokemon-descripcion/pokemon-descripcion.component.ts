@@ -45,6 +45,14 @@ export class PokemonDescripcionComponent {
   completarPokemonDescripcion() {
     this.pokemonDescripcion.nombre = this.pokemon.name;
     this.pokemonDescripcion.entradas_pokedex = this.buscarEntradasEspañol();
+    this.pokemonDescripcion.calcularPorcentajeGenero(this.especie.gender_rate);
+    this.pokemonDescripcion.rango_captura = this.especie.capture_rate;
+    this.pokemonDescripcion.felicidad_base = this.especie.base_happiness;
+    this.pokemonDescripcion.is_baby = this.especie.is_baby;
+    this.pokemonDescripcion.is_legendary = this.especie.is_legendary;
+    this.pokemonDescripcion.is_mythical = this.especie.is_mythical;
+    this.pokemonDescripcion.contador_eclosion = this.especie.hatch_counter;
+    this.pokemonDescripcion.tiene_diferencia_de_genero = this.especie.has_gender_differences;
   }
 
 
