@@ -11,9 +11,10 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class HeaderComponent implements OnInit {
   faSearch = faSearch;
-  resultados: NamedAPIResource[] = [];
-  resultadosBusqueda: NamedAPIResource[] = [];
+  resultadosItems: NamedAPIResource[] = [];
+  resultadosItemsBusqueda: NamedAPIResource[] = [];
   BuscadorActivo: boolean = false;
+  mostrarItems:boolean = true;
   constructor(private itemService: ItemService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
       this.itemService.getBusqueda(res.count).subscribe((res: any) => {
         const items = res.results;
         items.forEach((element: NamedAPIResource) => {
-          this.resultados.push({ name: this.capitalizar(element.name.replaceAll("-", " ")), url: element.url });
+          this.resultadosItems.push({ name: this.capitalizar(element.name.replaceAll("-", " ")), url: element.url });
         });
       });
     });
@@ -44,13 +45,13 @@ export class HeaderComponent implements OnInit {
     const value = input.value;
     if (value.length > 0) {
       this.BuscadorActivo = true;
-      this.resultadosBusqueda = this.resultados.filter((res: NamedAPIResource) => {
+      this.resultadosItemsBusqueda = this.resultadosItems.filter((res: NamedAPIResource) => {
 
         return res.name.toLowerCase().includes(value.toLowerCase());
       });
     } else {
       this.BuscadorActivo = false;
-      this.resultadosBusqueda = [];
+      this.resultadosItemsBusqueda = [];
     }
 
   }
@@ -63,9 +64,13 @@ export class HeaderComponent implements OnInit {
   @HostListener('click', ['$event']) onclick(event: any) {
     // si se hace click en el input del buscador
     if (event.target.id === "buscador") {
-      if (this.resultadosBusqueda.length > 0) {
+      if (this.resultadosItemsBusqueda.length > 0) {
         this.BuscadorActivo = true;
       }
+    }
+    if(event.target.id === "btn-items"){
+      this.BuscadorActivo=true;
+      document.getElementById("buscador").focus();
     }
 
   }

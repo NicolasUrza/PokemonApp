@@ -9,8 +9,8 @@
 
         <div class="col-7 col-md-8 busqueda">
             <div class="row searchInput">
-                <input type="search" class="form-control buscador col-10 col-md-11" [ngClass]="{'buscando': BuscadorActivo}" id="buscador" placeholder="Buscar"
-                    aria-label="Search">
+                <input type="search" class="form-control buscador col-10 col-md-11"
+                    [ngClass]="{'buscando': BuscadorActivo}" id="buscador" placeholder="Buscar" aria-label="Search">
 
                 <button class="btn btn-search col-2 col-md-1 icono-busqueda" (click)="buscarResultados()">
                     <fa-icon [icon]="faSearch"></fa-icon>
@@ -18,11 +18,19 @@
             </div>
             <div class="row">
                 <div class="resultados col-11" id="resultados" [ngClass]="{'inactivo': !BuscadorActivo}">
-                    <ul class ="col-12" *ngFor="let resultado of resultadosBusqueda">
-                        <li class="resultado {{resultado.name}}" (click)="navegar(resultado.url)">
-                             {{identificar(resultado.name, 0)}}<span class="resaltado">{{identificar(resultado.name,1)}}</span>{{identificar(resultado.name,2)}}
+
+                    <button class="btn btn-lg resultado col-12" id="btn-items" (click)="mostrarItems = !mostrarItems">
+                        Items
+                        <i class="fas fa-chevron-down"></i></button>
+                        <hr>
+                    <div *ngIf="mostrarItems" >
+                        <ul class="col-12" *ngFor="let resultado of resultadosItemsBusqueda">
+                            <li class="resultado {{resultado.name}}" (click)="navegar(resultado.url)">
+                                {{identificar(resultado.name, 0)}}<span
+                                    class="resaltado">{{identificar(resultado.name,1)}}</span>{{identificar(resultado.name,2)}}
                             </li>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

@@ -91,4 +91,17 @@ busqueda {
         width: 100%;
     }
 }
-    
+
+#btn-items {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+hr{
+    margin: 0;
+    padding: 0;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: #2b343b solid 1px;
+}

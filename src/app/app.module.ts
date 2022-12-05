@@ -16,6 +16,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './services/interceptor.service';
+import { PokemonDescripcionComponent } from './components/pokemon-descripcion/pokemon-descripcion.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InterceptorService } from './services/interceptor.service';
     InicioComponent,
     ItemDescripcionComponent,
     ResultadosComponent,
-    TituloComponent
+    TituloComponent,
+    PokemonDescripcionComponent
   ],
   imports: [
     BrowserModule,

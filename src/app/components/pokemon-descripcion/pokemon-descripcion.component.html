@@ -1,0 +1,53 @@
+<div class="container  contenido">
+    <!--spinner al cargar-->
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+        <p style="font-size: 20px; color: white">Cargando...</p>
+    </ngx-spinner>
+    <div class="row ">
+        <div class="col-12 col-md-6 imagen text-center">
+            <div class="botones">
+                <button class="btn btn-lg btn-primary btn-volver" (click)="volver()">
+                    <fa-icon [icon]="faCircleArrowLeft"></fa-icon> Volver
+                </button>
+            </div>
+            <div class="col-12 centro-pantalla">
+                <img src={{pokemon.sprites.front_default}} width="60%" alt={{pokemon.name}}>
+                <h1>{{capitalizar(pokemon.name.replaceAll("-", " "))}}</h1>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-6 descripcion">
+            <h2 class="text-center">Descripcion</h2>
+            <hr style="font-size: 2em;">
+            <div class="caracteristicas">
+
+            </div>
+            <div *ngIf="pokemonDescripcion.entradas_pokedex !=null && pokemonDescripcion.entradas_pokedex.length>0">
+                <button class="btn btn-lg btn-warning col-12"
+                style="margin-top: 1em; margin-bottom: 1em;"
+                    (click)="mostrarDescripcion = !mostrarDescripcion">
+                    <h4>Descripcion en juegos <i class="fa-solid fa-caret-down"></i></h4>
+                    </button>
+                <div *ngFor="let a of pokemonDescripcion.entradas_pokedex">
+                    <table *ngIf="mostrarDescripcion" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="table-title">
+                                    {{capitalizar(a.version.name.replaceAll("-"," "))}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fila">{{a.flavor_text }}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+        </div>
+
+    </div>
+
+</div>

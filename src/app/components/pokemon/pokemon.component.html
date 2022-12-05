@@ -10,7 +10,7 @@
     <div class="container text-center contenido">
         <div class="row">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2 item" *ngFor="let pk of ordenar(pokemon)">
-                <a routerLink="/items/{{pk.id}}">
+                <a routerLink="/pokemon/{{pk.id}}">
                     <div class="col-12">
                         <img src={{pk.sprites.front_default}}
                             alt="{{pk.sprites.front_default== null? 'imagen no disponible' :'Imagen de'+ pk.name}}"
