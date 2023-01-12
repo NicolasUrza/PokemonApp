@@ -19,6 +19,8 @@ export class PokemonDescripcionComponent {
   especie: PokemonSpecies;
   pokemonDescripcion: PokemonDescripcion = new PokemonDescripcion();
   mostrarDescripcion: boolean = false;
+  mostrarSprites: boolean = false;
+  pi:any;
   constructor(private pokemonService: PokemonService,
     private route: ActivatedRoute,
     private location: Location) {
@@ -35,12 +37,15 @@ export class PokemonDescripcionComponent {
 
   buscarPokemon(id: string): void {
     this.pokemonService.getbyid(id).subscribe((res: Pokemon) => {
-      this.pokemon = res
+      this.pokemon = res;
+
+      this.pi = res
+      console.log(this.pi)
       this.pokemonService.getSpecies(res.species.url).subscribe((res: PokemonSpecies) => {
         this.especie = res;
         this.completarPokemonDescripcion();
-      });
-    });
+      });})
+      ;
   }
   completarPokemonDescripcion() {
     this.pokemonDescripcion.nombre = this.pokemon.name;
@@ -53,6 +58,7 @@ export class PokemonDescripcionComponent {
     this.pokemonDescripcion.is_mythical = this.especie.is_mythical;
     this.pokemonDescripcion.contador_eclosion = this.especie.hatch_counter;
     this.pokemonDescripcion.tiene_diferencia_de_genero = this.especie.has_gender_differences;
+    this.pokemonDescripcion.sprites = this.pokemon.sprites;
   }
 
 

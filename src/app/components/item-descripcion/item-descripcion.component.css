@@ -1,57 +1,64 @@
-.contenido{
+.contenido {
     background-color: #eb3740;
     color: antiquewhite;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 35px 35px 35px 35px;
     -moz-border-radius: 35px 35px 35px 35px;
     -webkit-border-radius: 35px 35px 35px 35px;
     border: 0px solid #000000;
     max-width: 90%;
 
-    
+
 }
+
 h4 {
     color: antiquewhite;
 }
+
 @media (max-width: 768px) {
-.imagen {
-    padding: 1em;
-    background-color: brown;
-    border-radius:  35px 35px  0px 0px;
-    -moz-border-radius:  35px  35px  0px 0px;
-    -webkit-border-radius: 35px 35px  0px 0px;
-    
-}
-.centro-pantalla img{
-    width: 30%
-}
+    .imagen {
+        padding: 1em;
+        background-color: brown;
+        border-radius: 35px 35px 0px 0px;
+        -moz-border-radius: 35px 35px 0px 0px;
+        -webkit-border-radius: 35px 35px 0px 0px;
+
+    }
+
+    .centro-pantalla img {
+        width: 30%
+    }
 }
 
 @media (min-width: 768px) {
     .imagen {
-    padding: 1em;
-    background-color: brown;
-    border-radius: 35px 0px 0px 35px  ;
-    -moz-border-radius: 35px 0px 0px  35px  ;
-    -webkit-border-radius: 35px 0px 0px 35px  ;
-}
+        padding: 1em;
+        background-color: brown;
+        border-radius: 35px 0px 0px 35px;
+        -moz-border-radius: 35px 0px 0px 35px;
+        -webkit-border-radius: 35px 0px 0px 35px;
+    }
 }
 
-.caracteristicas{
-    display: inline; 
+.caracteristicas {
+    display: inline;
     align-items: left;
     font-size: 1.5em;
 }
+
 .descripcion {
-    padding:1.5em;
-    
+    padding: 1.5em;
+
 }
-table{
+
+table {
     color: antiquewhite;
 }
-.item{
+
+.item {
     padding: 1em;
 }
+
 .item:hover {
     border-radius: 35px 35px 35px 35px;
     -moz-border-radius: 35px 35px 35px 35px;
@@ -61,7 +68,7 @@ table{
     cursor: pointer;
 }
 
-.indicePagina{
+.indicePagina {
     font-size: 1.2em;
     background-color: #fde82bd8;
     border-radius: 0px;
@@ -69,22 +76,24 @@ table{
     -webkit-border-radius: 0px;
     border: 0px solid #000000;
 }
-.indicePagina:hover{
-    background-color:  #fde82b81;
+
+.indicePagina:hover {
+    background-color: #fde82b81;
     cursor: pointer;
 }
 
-.active{
-    background-color:  #fde82b81;
+.active {
+    background-color: #fde82b81;
     color: antiquewhite;
 
 }
-section{
+
+section {
     background-color: #000000;
     height: 30em;
 }
 
-.btn-volver{
+.btn-volver {
     background-color: #c7b510d8;
     border-radius: 35px 35px 35px 35px;
     -moz-border-radius: 35px 35px 35px 35px;
@@ -92,44 +101,65 @@ section{
     border: 0px solid #000000;
     color: antiquewhite;
     font-size: 1.5em;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.botones{
-    display: flex; 
-    align-items: left; 
+
+.botones {
+    display: flex;
+    align-items: left;
     justify-content: left;
     padding: 1em;
 }
 
-.table-title{
+.table-title {
     background-color: #ff5e5e;
     color: antiquewhite;
 }
-.fila{
+
+.fila {
     background-color: #b11717;
     color: antiquewhite;
 }
+
 @media (min-width: 768px) {
-  
-.centro-pantalla {
-    margin-top: 50%;
-}}
+
+    .centro-pantalla {
+        margin-top: 50%;
+    }
+}
 
 hr {
     border: none;
     height: 5px;
     /* Set the hr color */
-    color: antiquewhite; /* old IE */
-    background-color: antiquewhite; /* Modern Browsers */
+    color: antiquewhite;
+    /* old IE */
+    background-color: antiquewhite;
+    /* Modern Browsers */
 }
 
-.espaciado{
+.espaciado {
     margin-top: 1.5 em;
     margin-bottom: 1.5 em;
 }
 
-.probabilidades{
+.probabilidades {
     margin: 0;
     padding: 0;
     background-color: #e40f1a;
+}
+
+.visible {
+    transform: scaleY(1);
+    transition: transform 0.3s ease;
+    transform-origin: top;
+
+}
+
+.hidden {
+    transform: scaleY(0);
+    height: 0;
+    overflow-y: hidden;
+    transform-origin: top;
+    transition: transform 0.3s;
 }

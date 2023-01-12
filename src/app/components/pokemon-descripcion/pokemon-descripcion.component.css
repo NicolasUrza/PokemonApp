@@ -131,3 +131,6 @@ hr {
     padding: 0;
     background-color: #e40f1a;
 }
+.sprites {
+    display: flex; 
+}

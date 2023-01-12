@@ -26,7 +26,9 @@ export class PokemonService {
   getbyid(id: string) {
     return this.httpClient.get<Pokemon>(this.resourceUrl + id);
   }
-
+  getAny(id: string) {
+    return this.httpClient.get(this.resourceUrl + id);
+  }
   getSpecies(url:string){
     return this.httpClient.get<PokemonSpecies>(url);
   }

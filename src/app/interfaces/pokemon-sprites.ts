@@ -1,3 +1,5 @@
+import { VersionSprites } from "./version-sprites"
+
 export interface PokemonSprites {
     // urls
     front_default: string
@@ -8,4 +10,6 @@ export interface PokemonSprites {
     back_shiny: string
     back_female: string
     back_shiny_female: string
+    other: PokemonSprites[];
+    versions: VersionSprites;
 }
